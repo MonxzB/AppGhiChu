@@ -22,7 +22,7 @@
         android:layout_margin="10dp"
         android:background="@drawable/rounded_corner">
         <EditText
-            android:id="@+id/titleInput2"
+            android:id="@+id/showTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Tiêu đề"
@@ -30,7 +30,7 @@
             android:layout_margin="10dp"
             android:background="#3000B0FF"/>
         <EditText
-            android:id="@+id/contentInput2"
+            android:id="@+id/showContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nội dung"

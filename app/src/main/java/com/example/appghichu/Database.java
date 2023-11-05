@@ -83,24 +83,34 @@ public class Database extends SQLiteOpenHelper {
 
         return listNote;
     }
-    void updatedata(String row_id,String title,String content,String date){
+    public void update(int id, String updateTitle, String updateContent, String updateDate){
         SQLiteDatabase db=this.getWritableDatabase();
-        ContentValues cv=new ContentValues();
-        cv.put(COLUMN_TITLE,title);
-        cv.put(COLUMN_CONTENT,content);
-        cv.put(COLUMN_DATE,date);
 
-        long result =db.update(DB_TABLE , cv ,"id=?",new String[]{row_id});
-        if(result==-1){
-            Toast.makeText(context,"Lỗi cập nhật!",Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(context,"Cập nhật thành công!",Toast.LENGTH_SHORT).show();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_TITLE, updateTitle);
+        contentValues.put(COLUMN_CONTENT, updateContent);
+        contentValues.put(COLUMN_DATE, updateDate);
+
+        String where = COLUMN_ID + " = ?";
+        String[] whereArg = {String.valueOf(id)};
+
+        long result = db.update(DB_TABLE, contentValues, where, whereArg);
+        if (result==-1){
+            Toast.makeText(context, "Lỗi", Toast.LENGTH_SHORT).show();
         }
+        else {
+            Toast.makeText(context, "Đã sửa", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
-    void deleteOnRow(String row_id){
+    void deleteOnRow(int id){
         SQLiteDatabase db=this.getWritableDatabase();
-        long result =db.delete(DB_TABLE,"id=?",new String[]{row_id});
+
+        String where = COLUMN_ID + " = ?";
+        String[] whereArg = {String.valueOf(id)};
+
+        long result = db.delete(DB_TABLE, where, whereArg);
         if(result==-1){
             Toast.makeText(context,"Lỗi",Toast.LENGTH_SHORT).show();
         }else{

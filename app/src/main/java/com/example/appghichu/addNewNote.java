@@ -26,9 +26,7 @@ public class addNewNote extends AppCompatActivity {
 
         titleInput = findViewById(R.id.titleInput);
         contentInput = findViewById(R.id.contentInput);
-
         saveNoteBtn = findViewById(R.id.saveNoteBtn);
-
         saveNoteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,7 +36,8 @@ public class addNewNote extends AppCompatActivity {
                 notes = new ArrayList<>();
 
                 calendar = Calendar.getInstance();
-                date = calendar.get(Calendar.DAY_OF_MONTH) +"/"+ calendar.get(Calendar.MONTH) +"/"+ calendar.get(Calendar.YEAR);
+                date = calendar.get(Calendar.DAY_OF_MONTH) +"/"+ (calendar.get(Calendar.MONTH)+1) +
+                        "/"+ calendar.get(Calendar.YEAR);
 
                 Note note= new Note(title,content,date);
 
